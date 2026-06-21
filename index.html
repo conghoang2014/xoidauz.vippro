@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>XÔI ĐẬU SPORTS VIP PRO</title>
+    <title>XÔI ĐẬU SPORTS VIP PRO - [Tau & Mi Sửa Lỗi]</title>
     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
     <style>
         body { margin: 0; background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
@@ -40,7 +40,11 @@
     </div>
     
     <div id="playerWrapper">
-        <img src="XOIDAUZ.VIPPRO.png" class="logo-overlay" alt="Logo">
+        <!-- TAU ĐÃ SỬA: Thay src= "XOIDAUZ.VIPPRO.png" bằng ảnh online để mi thấy logo. 
+             Khi mi tải logo xịn của mi lên GitHub, mi hãy thay lại đoạn:
+             'https://cdn.pixabay.com/photo/2017/02/10/18/35/logo-2055611_1280.png'
+             bằng 'XOIDAUZ.VIPPRO.png' như code cũ của mi nhé! -->
+        <img src="https://cdn.pixabay.com/photo/2017/02/10/18/35/logo-2055611_1280.png" class="logo-overlay" alt="XOIDAUZ Logo">
         
         <video id="player" class="video-js vjs-default-skin vjs-big-play-centered" controls autoplay></video>
 
@@ -80,7 +84,7 @@
         const list = document.getElementById('list');
         channels.forEach(ch => {
             let el = document.createElement('div');
-            el.className = 'channel';
+             el.className = 'channel';
             el.innerText = ch.name;
             el.onclick = () => {
                 document.querySelectorAll('.channel').forEach(c => c.classList.remove('active'));
