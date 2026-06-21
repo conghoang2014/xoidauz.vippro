@@ -13,8 +13,21 @@
         .channel:hover { background: #007bff; }
         #playerWrapper { flex: 1; position: relative; }
         .video-js { width: 100% !important; height: 100% !important; }
-        /* Logo - Dùng link ảnh trực tiếp để chắc chắn nó hiện */
-        .my-logo { position: absolute; top: 20px; right: 20px; width: 200px; z-index: 10; }
+        
+        /* LOGO BẰNG CHỮ (KHÔNG CẦN ẢNH) */
+        .my-logo-text {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background: rgba(0, 123, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+        }
     </style>
 </head>
 <body>
@@ -24,7 +37,7 @@
 <div class="container">
     <div class="sidebar" id="list"></div>
     <div id="playerWrapper">
-        <img src="https://via.placeholder.com/200x100?text=LOGO+HERE" class="my-logo" alt="Logo">
+        <div class="my-logo-text">XÔI ĐẬU VIP</div>
         
         <video id="player" class="video-js vjs-default-skin vjs-big-play-centered" controls autoplay></video>
     </div>
