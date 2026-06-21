@@ -8,31 +8,20 @@
         body { margin: 0; background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
         header { background: #1a1a1a; padding: 15px; text-align: center; font-size: 20px; font-weight: bold; border-bottom: 2px solid #007bff; }
         .main { display: flex; flex: 1; overflow: hidden; }
-        
         .sidebar { width: 300px; background: #1a1a1a; border-right: 1px solid #333; display: flex; flex-direction: column; overflow-y: auto; }
         .search-box { padding: 15px; }
         .search-box input { width: 100%; padding: 12px; border-radius: 20px; border: 1px solid #444; background: #2a2a2a; color: #fff; outline: none; box-sizing: border-box; }
-        
         .channel { padding: 15px; border-bottom: 1px solid #333; cursor: pointer; transition: 0.3s; }
         .channel:hover, .channel.active { background: #007bff; }
-
         #playerWrapper { flex: 1; position: relative; background: #000; display: flex; flex-direction: column; }
         .video-js { width: 100% !important; height: 100% !important; }
-
-        /* Sửa lỗi hiển thị Logo */
-        .logo-container { 
-            position: absolute; top: 20px; right: 20px; z-index: 9999; 
-            width: 200px; display: block; 
-        }
+        .logo-container { position: absolute; top: 20px; right: 20px; z-index: 9999; width: 200px; }
         .logo-container img { width: 100%; height: auto; display: block; }
-        
         .marquee-container { position: absolute; bottom: 0; left: 0; width: 100%; background: #ff0000; color: #fff; padding: 8px 0; font-weight: bold; z-index: 9999; }
     </style>
 </head>
 <body>
-
 <header>XÔI ĐẬU SPORTS VIP PRO</header>
-
 <div class="main">
     <div class="sidebar">
         <div class="search-box">
@@ -40,14 +29,11 @@
         </div>
         <div id="list"></div>
     </div>
-    
     <div id="playerWrapper">
         <div class="logo-container">
             <img src="XOIDAUZ.VIPPRO.png" alt="Logo" onerror="this.style.display='none'">
         </div>
-        
         <video id="player" class="video-js vjs-default-skin vjs-big-play-centered" controls autoplay></video>
-
         <div class="marquee-container">
             <marquee scrollamount="8">
                 ⚠️ CÁC HÀNH VI CÁ ĐỘ LÀ VI PHẠM PHÁP LUẬT ⚠️ | 🏆 WEB LẬU UY TÍN SỐ 1 VIỆT NAM 🏆 | ⚽ XÔI ĐẬU SPORTS - XEM BÓNG ĐÁ ĐỈNH CAO ⚽
@@ -55,11 +41,35 @@
         </div>
     </div>
 </div>
-
 <script src="https://vjs.zencdn.net/7.20.3/video.js"></script>
 <script>
     const player = videojs('player');
     const channels = [
         { name: "[FIFA] Tín Hiệu Nguyên Bản", url: "https://hoiquan.dpdns.org/VTVGo/?WC-FiFa" },
-        { name: "[FIFA] Bình Luận Cảm Xúc", url: "https://hoiquan.dpdns.org/VTVGo/?BinhLuanCamXuc" },
-        { name: "[HTV] HTV Thể Thao", url: "
+        { name: "[HTV] HTV Thể Thao", url: "https://live.fptplay53.net/epzhd1/htvcthethao_vhls.smil/chunklist.m3u8" }
+    ];
+    function init() {
+        const list = document.getElementById('list');
+        channels.forEach(ch => {
+            let el = document.createElement('div');
+            el.className = 'channel';
+            el.innerText = ch.name;
+            el.onclick = () => {
+                document.querySelectorAll('.channel').forEach(c => c.classList.remove('active'));
+                el.classList.add('active');
+                player.src({src: ch.url, type: 'application/x-mpegURL'});
+                player.play();
+            };
+            list.appendChild(el);
+        });
+        document.querySelectorAll('.channel')[0].click();
+    }
+    function filterChannels(val) {
+        document.querySelectorAll('.channel').forEach(el => {
+            el.style.display = el.innerText.toLowerCase().includes(val.toLowerCase()) ? 'block' : 'none';
+        });
+    }
+    init();
+</script>
+</body>
+</html>
